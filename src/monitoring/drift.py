@@ -1,5 +1,4 @@
 from typing import Dict, Any
-import time
 
 def check_drift(reference_stats: Dict[str, Any], live_stats: Dict[str, Any]) -> Dict[str, Any]:
     alerts = {}
