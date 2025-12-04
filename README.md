@@ -133,3 +133,5 @@ engenheiro-ia-roadmap
 ├── reports
 └── src
 ```
+
+chore: linha em branco para disparar CI
