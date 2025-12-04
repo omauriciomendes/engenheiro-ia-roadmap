@@ -1,3 +1,5 @@
+![CI](https://github.com/omauriciomendes/engenheiro-ia-roadmap/actions/workflows/ci.yml/badge.svg)
+
 # Roadmap Engenheiro de IA — 90 dias
 
 Este repositório acompanha seu plano de transição de carreira para Engenheiro de IA. 
