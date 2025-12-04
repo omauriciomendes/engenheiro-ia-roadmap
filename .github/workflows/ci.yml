@@ -24,3 +24,9 @@ jobs:
         run: ruff check src
       - name: Tests
         run: pytest -q
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+  workflow_dispatch: {}
