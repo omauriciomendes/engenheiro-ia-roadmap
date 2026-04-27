@@ -1,7 +1,7 @@
 pandas>=2.2.0
 numpy>=1.26.0
 scikit-learn>=1.4.0
-matplotlib>=3.8.0
+matplotlib>=3.10.9
 fastapi>=0.115.0
 uvicorn[standard]>=0.30.0
 mlflow>=2.16.0
