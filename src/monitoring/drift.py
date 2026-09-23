@@ -1,7 +1,7 @@
-from typing import Dict, Any
+from typing import Any
 
 
-def check_drift(reference_stats: Dict[str, Any], live_stats: Dict[str, Any]) -> Dict[str, Any]:
+def check_drift(reference_stats: dict[str, Any], live_stats: dict[str, Any]) -> dict[str, Any]:
     alerts = {}
     for k, ref in reference_stats.items():
         live = live_stats.get(k, ref)

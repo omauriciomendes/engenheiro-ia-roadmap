@@ -1,6 +1,7 @@
+from typing import Any
+
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import List, Dict, Any
 
 app = FastAPI(title="Recomendador de Setlists", version="0.1.0")
 
@@ -10,13 +11,13 @@ class ContextoEvento(BaseModel):
     publico: str
     energia_desejada: str
     clima: str | None = None
-    historico_musicas: List[str] | None = None
+    historico_musicas: list[str] | None = None
 
 
 class Recomendacao(BaseModel):
     proxima_musica: str
     justificativa: str
-    features: Dict[str, Any]
+    features: dict[str, Any]
 
 
 @app.get("/health")
