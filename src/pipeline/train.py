@@ -9,19 +9,24 @@ import mlflow
 import mlflow.sklearn
 import pathlib
 
+
 def load_data(path="data/processed/setlists.csv"):
     return pd.read_csv(path)
+
 
 def build_pipeline():
     cat_cols = ["genero", "tonalidade", "contexto"]
     num_cols = ["bpm", "energia"]
-    pre = ColumnTransformer([
-        ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols),
-        ("num", StandardScaler(), num_cols)
-    ])
+    pre = ColumnTransformer(
+        [
+            ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols),
+            ("num", StandardScaler(), num_cols),
+        ]
+    )
     model = RandomForestClassifier(n_estimators=200, random_state=42)
     pipe = Pipeline([("prep", pre), ("clf", model)])
     return pipe
+
 
 def main():
     data_path = pathlib.Path("data/processed/setlists.csv")
@@ -32,7 +37,9 @@ def main():
     X = df[["genero", "tonalidade", "contexto", "bpm", "energia"]]
     y = df["proxima_musica"]
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
 
     with mlflow.start_run():
         pipe = build_pipeline()
@@ -45,6 +52,7 @@ def main():
         mlflow.log_metric("top3_accuracy", top3)
         mlflow.sklearn.log_model(pipe, artifact_path="model")
         print(f"Top-3 accuracy: {top3:.3f}")
+
 
 if __name__ == "__main__":
     main()

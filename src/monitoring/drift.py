@@ -1,5 +1,6 @@
 from typing import Dict, Any
 
+
 def check_drift(reference_stats: Dict[str, Any], live_stats: Dict[str, Any]) -> Dict[str, Any]:
     alerts = {}
     for k, ref in reference_stats.items():
@@ -8,6 +9,7 @@ def check_drift(reference_stats: Dict[str, Any], live_stats: Dict[str, Any]) -> 
         if delta > 0.2:
             alerts[k] = {"ref": ref, "live": live, "delta": delta}
     return alerts
+
 
 if __name__ == "__main__":
     ref = {"bpm_avg": 120.0, "energia_avg": 0.6}
