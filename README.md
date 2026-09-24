@@ -1,9 +1,13 @@
 ![CI](https://github.com/omauriciomendes/engenheiro-ia-roadmap/actions/workflows/ci.yml/badge.svg)
 
-# Roadmap Engenheiro de IA — 90 dias
+# Roadmap Engenheiro de IA: 90 dias
 
-Este repositório acompanha seu plano de transição de carreira para Engenheiro de IA. 
-Carga semanal prevista: 20 horas. Perfil: iniciante. Objetivo: transição de músico para tecnologia. Preferências: dados e código. Cursos de apoio: DIO. Universidade: UNINASSAU.
+Este repositório acompanha o meu plano de transição de carreira, de músico para Engenheiro de IA, e o projeto prático que nasce dele.
+
+* Carga semanal prevista: 20 horas
+* Ponto de partida: iniciante
+* Preferências: dados e código
+* Apoio: cursos da DIO e graduação na UNINASSAU
 
 ## Visão do dia a dia
 
@@ -77,43 +81,15 @@ Critérios de aceitação
 * Métricas claras. Top-K accuracy ou MAP e latência da API
 * README com arquitetura, decisões de design e exemplos de uso
 
-Dica
-Aproveite sua vivência como músico. Crie features como andamento, tonalidade, energia, proximidade de hits locais. Conte a história do problema e os ganhos práticos em shows.
+### Onde o projeto está hoje
 
-## Roteiro de entrevistas
-
-Pergunta 1. Fale sobre um projeto de machine learning que você fez
-Como responder
-Contexto, objetivo, dados, modelo, métricas, deploy, lições. Use o recomendador.
-
-Pergunta 2. Como você escolhe métricas para um modelo
-Como responder
-Amarre à tarefa. Classificação pode usar F1 em desbalanceamento, regressão pode usar MAE, recomendação pode usar MAP e cobertura. Traga métrica de negócio.
-
-Pergunta 3. O que é overfitting e como evitar
-Como responder
-Definição simples, sintomas, validação cruzada, regularização, early stopping, mais dados, simplificar o modelo e monitorar em produção.
-
-Pergunta 4. Como colocar um modelo em produção
-Como responder
-Empacotar pipeline, criar API, versionar modelo e dados, observabilidade, rollback, testes, segurança e automação com CI.
-
-Pergunta 5. Conte uma situação em que você convenceu alguém com dados
-Como responder
-Situação, tarefa, ação, resultado. Use exemplo de marketing ou música.
-
-## Trilha DIO recomendada
-
-Trilha: Machine Learning Specialist da DIO. Alternativa complementar. Bootcamp CAIXA Inteligência Artificial na Prática.
-
-Por que
-Cobre Python, Pandas, Scikit-learn e bibliotecas modernas com projetos. Conecta fundamentos a prática necessária para Engenheiro de IA. Ajuda a construir portfólio e networking.
-
-Próximos passos
-1. Acesse dio.me
-2. Busque pela trilha sugerida
-3. Inscreva-se
-4. Siga o cronograma junto com este roadmap
+| Parte | Estado |
+| --- | --- |
+| API FastAPI com `/health` e `/recomendar` | Pronta, com testes. Por enquanto devolve sempre a mesma música, sem modelo treinado |
+| Pipeline de treino (scikit-learn, MLflow, métrica Top-3) | Escrito, esperando dados |
+| Dataset `data/processed/setlists.csv` | Só o cabeçalho. Próximo passo: organizar os setlists dos meus shows |
+| Checagem de drift | Função que alerta quando uma métrica varia mais de 20% |
+| CI no GitHub Actions (pre-commit, ruff, pytest) | Configurado |
 
 ## Como usar este repositório
 
@@ -127,11 +103,11 @@ Próximos passos
 
 ```
 engenheiro-ia-roadmap
-├── configs
-├── data
-├── notebooks
-├── reports
-└── src
+├── data/processed      dados de setlists (CSV)
+├── src/api             API de recomendação (FastAPI)
+├── src/pipeline        treino do modelo (scikit-learn + MLflow)
+├── src/monitoring      checagem de drift
+├── tests               testes da API
+├── ROADMAP_90_DIAS.md  metas semana a semana
+└── Makefile            setup, testes, lint e API
 ```
-
-chore: linha em branco para disparar CI

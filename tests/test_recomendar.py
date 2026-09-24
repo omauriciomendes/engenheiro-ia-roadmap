@@ -1,5 +1,7 @@
 from fastapi.testclient import TestClient
+
 from src.api.app import app
+
 
 def test_recomendar():
     c = TestClient(app)
@@ -8,7 +10,7 @@ def test_recomendar():
         "publico": "adulto",
         "energia_desejada": "média",
         "clima": "festa",
-        "historico_musicas": ["Exemplo A", "Exemplo B"]
+        "historico_musicas": ["Exemplo A", "Exemplo B"],
     }
     r = c.post("/recomendar", json=payload)
     assert r.status_code == 200
